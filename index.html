@@ -3,18 +3,31 @@
 #include <stdio.h>
 
 int main() {
-    int number;
-    long long int factorial = 1;
-    printf("Enter a non-negative integer: ");
-    scanf("%d", &number);
-    if (number < 0) {
-        printf("Error: Factorial does not exist for negative numbers.\n");
-    } else {
-        for (int i = 1; i <= number; ++i) {
-            factorial = factorial * i;
-        }
-        printf("Factorial of %d is %llu\n", number, factorial);
+    int n;
+    unsigned long long int t1 = 0, t2 = 1;
+    unsigned long long int nxt;
+    printf("Enter the number of terms for the Fibonacci series: ");
+    scanf("%d", &n);
+    if (n <= 0) {
+        printf("Please enter a positive number of terms.\n");
+        return 1; 
     }
-    return 0;
+    printf("Fibonacci Series for %d terms:\n", n);
+    for (int i = 1; i <= n; ++i) {
+        if (i == 1) {
+            printf("%llu", t1);
+            continue;
+        }
+        if (i == 2) {
+            printf(", %llu", t2);
+            continue;
+        }
+        nxt = t1 + t2;
+        t1 = t2;
+        t2 = nxt;
+        printf(", %llu", nxt);
+    }
+    printf("\n");
+    return 0; 
 }
 <pre><code>
